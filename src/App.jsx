@@ -119,15 +119,6 @@ function App() {
               <p>Sitio web</p>
             </div>
           </article>
-          <article className={style.proyect}>
-            <div className={style.image}>
-              <img src="https://via.placeholder.com/250X180" alt="" />
-            </div>
-            <div className={style.info}>
-              <a href="#">Nombre del proyecto</a>
-              <p>Sitio web</p>
-            </div>
-          </article>
         </div>
       </section>
       {/* FIN CONTENIDO */}

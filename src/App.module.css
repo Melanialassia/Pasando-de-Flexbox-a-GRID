@@ -10,19 +10,18 @@
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 30% 70%;
   align-items: center;
+  width: 100%;
   height: 120px;
   border-bottom: 1px solid rgba(225, 225, 226, 0.8);
 }
 
 .logo {
-  flex-grow: 1;
-  flex-basis: 65%;
   padding: 10px;
   margin-left: 20px;
+  margin-right: 20px;
   color: black;
   text-shadow: 1px 1px 0px #ccc;
   text-transform: uppercase;
@@ -36,19 +35,17 @@
 }
 
 .menu {
-  flex-grow: 1;
-  flex-basis: 30%;
+  width: 100%;
   height: 100%;
   padding-right: 20px;
+  text-align: center;
 }
 
 .menu ul {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  justify-content: space-between;
+  height: 100%;
   list-style: none;
 }
 
@@ -65,24 +62,28 @@
 }
 
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-column-gap: 100px;
+  align-items: start;
   justify-content: space-between;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .proyects {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-basis: 70%;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    30%
+  ); /*para que calcule solo la cantidad de columnas que debe de crear*/
+  grid-gap: 20px;
+  align-items: start;
 }
 
 .proyect {
-  flex-grow: 1;
+  min-width: 30%;
   margin-right: 20px;
-  flex-basis: 250px;
   margin-bottom: 25px;
   border: 1px solid #ccc;
 }
@@ -112,10 +113,6 @@
 }
 
 .lateral {
-  display: flex;
-  flex-direction: column; /* coloca los elementos uno debajo del otro*/
-  flex-wrap: wrap;
-  flex-basis: 15%;
   margin-right: 30px;
   padding: 15px;
 }
@@ -137,105 +134,91 @@
 }
 
 .lateral ul li {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .lateral a {
-    display: block;
-    text-align: center;
-    padding: 20px;
-    background: #eee;
-    color: #444;
-    transition: all 300ms;
-    text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: 20px;
+  background: #eee;
+  color: #444;
+  transition: all 300ms;
+  text-transform: uppercase;
 }
 
-.lateral a:hover{
-    background: #444;
-    color: #eee;
+.lateral a:hover {
+  background: #444;
+  color: #eee;
 }
 
-.footer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    height: 120px;
-    align-items: center;
-    border-top: 1px solid rgba(225, 225, 226, 0.8);
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 25%;
+  align-items: center;
+  justify-content: start;
+  height: 120px;
+  border-top: 1px solid rgba(225, 225, 226, 0.8);
 }
 
 .footer .logo {
-    opacity: 0.5;
-    flex-basis: auto;
-    flex-grow: 1;
-    order: 2;
-    text-align: right;
-    margin-right: 20px;
+  opacity: 0.5;
+  text-align: left;
+  margin-right: 20px;
 }
 
 .footer .info {
-    flex-grow: 1;
-    order: 1;
-    margin-left: 20px;
-    color: #444;
+  margin-left: 20px;
+  color: #444;
 }
 
 /*RESPONSIVE*/
 
-@media (max-width: 1334px) {
+@media (max-width: 784px) {
+  .header {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    height: 140px;
+    padding-bottom: 20px;
+  }
 
-    .header{
-        text-align: center;
-    }
-    
-    .menu ul{
-        align-items: flex-start;
-        justify-content: space-evenly;
-        margin-top: 20px;
-    }
-}
+  .header h1 {
+    text-align: center;
+  }
 
-@media (max-width: 646px) {
+  .content {
+    grid-template-columns: 1fr;
+    grid-column-gap: auto;
+  }
 
-    .content{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
+  .proyects {
+    grid-template-columns: 1fr;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
-    .lateral{
-        margin-right: 0px;
-    }
+  .proyect {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
-    .lateral ul{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+  .lateral {
+    margin: 0px;
+  }
 
-    .lateral ul li{
-        flex-grow: 1;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+  .lateral ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
 
-    .proyects{
-        flex-basis: 100%;
-        margin-right: 20px ;
-        margin-left: 30px ;
-    }
+  .footer{
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-    .footer .logo{
-        order: 1;
-        text-align: center;
-        margin: 0px;
-    }
-
-    .footer .info{
-        flex-basis: 100%;
-        text-align: center;
-        order: 2;
-        margin: 0px;
-    }
+  .footer .logo {
+    text-align: center;
+  }
 }
